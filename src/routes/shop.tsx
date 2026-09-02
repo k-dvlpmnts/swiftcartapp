@@ -103,7 +103,7 @@ function Shop() {
             </button>
             <button
               type="button"
-              onClick={() => addItem(CATALOG[Math.floor(Math.random() * CATALOG.length)])}
+              onClick={() => addItem(CATALOG[Math.floor(Math.random() * CATALOG.length)]!)}
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-accent"
             >
               <Camera className="h-4 w-4" /> Camera scan

@@ -15,6 +15,7 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as StaffRouteImport } from './routes/staff'
+import { Route as StaffDashboardRouteImport } from './routes/staff-dashboard'
 import { Route as ReceiptCodeRouteImport } from './routes/receipt.$code'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const StaffRoute = StaffRouteImport.update({
   path: '/staff',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffDashboardRoute = StaffDashboardRouteImport.update({
+  id: '/staff-dashboard',
+  path: '/staff-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReceiptCodeRoute = ReceiptCodeRouteImport.update({
   id: '/receipt/$code',
   path: '/receipt/$code',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
+  '/staff-dashboard': typeof StaffDashboardRoute
   '/receipt/$code': typeof ReceiptCodeRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
+  '/staff-dashboard': typeof StaffDashboardRoute
   '/receipt/$code': typeof ReceiptCodeRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
+  '/staff-dashboard': typeof StaffDashboardRoute
   '/receipt/$code': typeof ReceiptCodeRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/shop'
     | '/staff'
+    | '/staff-dashboard'
     | '/receipt/$code'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/shop'
     | '/staff'
+    | '/staff-dashboard'
     | '/receipt/$code'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/shop'
     | '/staff'
+    | '/staff-dashboard'
     | '/receipt/$code'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ShopRoute: typeof ShopRoute
   StaffRoute: typeof StaffRoute
+  StaffDashboardRoute: typeof StaffDashboardRoute
   ReceiptCodeRoute: typeof ReceiptCodeRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff-dashboard': {
+      id: '/staff-dashboard'
+      path: '/staff-dashboard'
+      fullPath: '/staff-dashboard'
+      preLoaderRoute: typeof StaffDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/receipt/$code': {
       id: '/receipt/$code'
       path: '/receipt/$code'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ShopRoute: ShopRoute,
   StaffRoute: StaffRoute,
+  StaffDashboardRoute: StaffDashboardRoute,
   ReceiptCodeRoute: ReceiptCodeRoute,
 }
 export const routeTree = rootRouteImport

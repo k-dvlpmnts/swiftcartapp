@@ -20,7 +20,7 @@ export const Route = createFileRoute("/staff-dashboard")({
   component: Dashboard,
 });
 
-type Result = { status: "valid" | "invalid" | "expired"; code: string; total?: number } | null;
+type Result = { status: "valid" | "invalid" | "expired"; code: string; total?: number | undefined } | null;
 
 function Dashboard() {
   const { session, signOut } = useSession();

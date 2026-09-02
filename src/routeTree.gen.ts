@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as StaffRouteImport } from './routes/staff'
+import { Route as StaffDashboardRouteImport } from './routes/staff-dashboard'
+import { Route as ReceiptCodeRouteImport } from './routes/receipt.$code'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffDashboardRoute = StaffDashboardRouteImport.update({
+  id: '/staff-dashboard',
+  path: '/staff-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceiptCodeRoute = ReceiptCodeRouteImport.update({
+  id: '/receipt/$code',
+  path: '/receipt/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/shop': typeof ShopRoute
+  '/staff': typeof StaffRoute
+  '/staff-dashboard': typeof StaffDashboardRoute
+  '/receipt/$code': typeof ReceiptCodeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/shop': typeof ShopRoute
+  '/staff': typeof StaffRoute
+  '/staff-dashboard': typeof StaffDashboardRoute
+  '/receipt/$code': typeof ReceiptCodeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/shop': typeof ShopRoute
+  '/staff': typeof StaffRoute
+  '/staff-dashboard': typeof StaffDashboardRoute
+  '/receipt/$code': typeof ReceiptCodeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/shop'
+    | '/staff'
+    | '/staff-dashboard'
+    | '/receipt/$code'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/shop'
+    | '/staff'
+    | '/staff-dashboard'
+    | '/receipt/$code'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/shop'
+    | '/staff'
+    | '/staff-dashboard'
+    | '/receipt/$code'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ShopRoute: typeof ShopRoute
+  StaffRoute: typeof StaffRoute
+  StaffDashboardRoute: typeof StaffDashboardRoute
+  ReceiptCodeRoute: typeof ReceiptCodeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff-dashboard': {
+      id: '/staff-dashboard'
+      path: '/staff-dashboard'
+      fullPath: '/staff-dashboard'
+      preLoaderRoute: typeof StaffDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/receipt/$code': {
+      id: '/receipt/$code'
+      path: '/receipt/$code'
+      fullPath: '/receipt/$code'
+      preLoaderRoute: typeof ReceiptCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
+  ShopRoute: ShopRoute,
+  StaffRoute: StaffRoute,
+  StaffDashboardRoute: StaffDashboardRoute,
+  ReceiptCodeRoute: ReceiptCodeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
